@@ -6,7 +6,7 @@
 from random import random 
 def sample(p):
     x, y = random(), random()
-    return 1 if x*x + y*y < 1 else 0
+    return 1 if x**2 + y**2 < 1 else 0
   
 NUM_SAMPLES = 10 # Increment by 10x 
 count = sc.parallelize(range(0,NUM_SAMPLES)).map(sample)\

@@ -82,9 +82,11 @@ def read_data(label_url, image_url):
 
 path='http://yann.lecun.com/exdb/mnist/'
 (train_lbl, train_img) = read_data(
-    path+'train-labels-idx1-ubyte.gz', path+'train-images-idx3-ubyte.gz')
+    f'{path}train-labels-idx1-ubyte.gz', f'{path}train-images-idx3-ubyte.gz'
+)
 (val_lbl, val_img) = read_data(
-    path+'t10k-labels-idx1-ubyte.gz', path+'t10k-images-idx3-ubyte.gz')
+    f'{path}t10k-labels-idx1-ubyte.gz', f'{path}t10k-images-idx3-ubyte.gz'
+)
 
 # COMMAND ----------
 
@@ -98,7 +100,7 @@ display()
 
 # COMMAND ----------
 
-print('label: %s' % (train_lbl[0:10],))
+print(f'label: {train_lbl[:10]}')
 
 # COMMAND ----------
 
@@ -170,7 +172,7 @@ display()
 
 # COMMAND ----------
 
-prob = model.predict(val_img[0:1].astype(np.float32)/255)[0]
+prob = model.predict(val_img[:1].astype(np.float32) / 255)[0]
 print ('Classified as %d with probability %f' % (prob.argmax(), max(prob)))
 
 # COMMAND ----------

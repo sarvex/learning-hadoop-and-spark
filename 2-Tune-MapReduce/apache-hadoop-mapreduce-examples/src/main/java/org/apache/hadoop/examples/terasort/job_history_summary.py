@@ -23,10 +23,7 @@ pat = re.compile('(?P<name>[^=]+)="(?P<value>[^"]*)" *')
 counterPat = re.compile('(?P<name>[^:]+):(?P<value>[^,]*),?')
 
 def parse(tail):
-  result = {}
-  for n,v in re.findall(pat, tail):
-    result[n] = v
-  return result
+  return dict(re.findall(pat, tail))
 
 mapStartTime = {}
 mapEndTime = {}
